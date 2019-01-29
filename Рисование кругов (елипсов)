@@ -1,0 +1,43 @@
+             double xf, yf, a, b;
+                int xmax = rc.right;
+                int ymax = rc.bottom;
+                dc.MoveTo(0, cy);
+                dc.LineTo(xmax, cy);
+                dc.LineTo(xmax - xmax / 100 * 2, cy - ymax / 100 * 2);
+                dc.MoveTo(xmax, cy);
+                dc.LineTo(xmax - xmax / 100 * 2, cy + ymax / 100 * 2);
+                dc.TextOutW(xmax - xmax / 100 * 2 - 10, cy + ymax / 100 * 2, L"X");
+
+                // ось ОY  із стрілочками
+                dc.MoveTo(cx, 0);
+                dc.LineTo(cx, ymax);
+                dc.MoveTo(cx, 0);
+                dc.LineTo(cx - xmax / 100 * 2, ymax / 100 * 3);
+                dc.MoveTo(cx, 0);
+                dc.LineTo(cx + xmax / 100 * 2, ymax / 100 * 3);
+                dc.TextOutW(cx + xmax / 100 * 2, ymax / 300, L"Y");
+                dc.TextOut(cx + xmax / 100 * 2, cy + ymax / 100 * 2, L"O");
+                a = -15; b = 5;
+
+                x1 = 0;
+                xf = a + x1 * (b - a) / xmax;
+                yf = MyF1(xf);
+                y1 = yf * xmax / (b - a);
+                y1 = ymax / 2 - y1;
+                dc.MoveTo(x1 - cx / 2, y1);
+
+                cf = RGB(255, 0, 0);
+                hPenOxy = CreatePen(PS_SOLID, 3, cf);
+                hOldPen = (HPEN)SelectObject(dc, hPenOxy)
+
+Той самый код що й у Квадрата, а потым блок малювання.
+
+
+                x1 = cx + 100;
+                y1 = 20;
+                dd = 220;
+                for (k = 0; k < 8; k++)
+                {
+                        dc.Ellipse(x1 + k * 10, y1 + k * 10, x1 + k * 10+dd/sqrt(2),y1 + k
+* 10+dd/sqrt(2));
+                }
